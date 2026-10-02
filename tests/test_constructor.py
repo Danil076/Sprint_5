@@ -16,15 +16,13 @@ class TestConstructor:
         #кликаем обратно на "Булки" (проверяем, что кнопка работает)
         driver.find_element(*Locators.TAB_BUNS).click()
 
-        #кликаем на булку
-        driver.find_element(*Locators.INGREDIENT_BUN).click()
-
-        #проверяем модальное окно
+        # Ждем, пока вкладка "Булки" станет активной (появится класс tab_tab_type_current)
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.MODAL_TITLE_BUN)
+            EC.visibility_of_element_located(Locators.TAB_BUNS_ACTIVE)
         )
 
-        assert driver.find_element(*Locators.MODAL_TITLE_BUN).is_displayed()
+        # Проверяем, что активная вкладка действительно "Булки"
+        assert driver.find_element(*Locators.TAB_BUNS_ACTIVE).is_displayed()
 
     # проверка раздела "Соусы"
     def test_sauces_section(self, driver):
@@ -33,14 +31,13 @@ class TestConstructor:
         #кликаем на "Соусы"
         driver.find_element(*Locators.TAB_SAUCES).click()
 
-        #кликаем на соус
-        driver.find_element(*Locators.INGREDIENT_SAUCE).click()
-
-        #проверяем модальное окно
+        # Ждем, пока вкладка "Соусы" станет активной
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.MODAL_TITLE_SAUCE)
+            EC.visibility_of_element_located(Locators.TAB_SAUCES_ACTIVE)
         )
-        assert driver.find_element(*Locators.MODAL_TITLE_SAUCE).is_displayed()
+
+        # Проверяем, что активная вкладка действительно "Соусы"
+        assert driver.find_element(*Locators.TAB_SAUCES_ACTIVE).is_displayed()
 
     # проверка раздела "Начинки"
     def test_fillings_section(self, driver):
@@ -49,12 +46,11 @@ class TestConstructor:
         #кликаем на "Начинки"
         driver.find_element(*Locators.TAB_FILLINGS).click()
 
-        #кликаем на начинку
-        driver.find_element(*Locators.INGREDIENT_FILLING).click()
-
-        #проверяем модальное окно
+        # Ждем, пока вкладка "Начинки" станет активной
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.MODAL_TITLE_FILLING)
+            EC.visibility_of_element_located(Locators.TAB_FILLINGS_ACTIVE)
         )
 
-        assert driver.find_element(*Locators.MODAL_TITLE_FILLING).is_displayed()
+        # Проверяем, что активная вкладка действительно "Начинки"
+        assert driver.find_element(*Locators.TAB_FILLINGS_ACTIVE).is_displayed()
+        

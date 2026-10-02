@@ -1,6 +1,6 @@
 import pytest
-import random
 from selenium import webdriver
+from helpers import generate_user_data
 
 
 @pytest.fixture(scope="function")
@@ -14,12 +14,4 @@ def driver():
 # Функция для генерации почты и пароля
 @pytest.fixture(scope="function")
 def users():
-    random_digits = random.randint(100, 999)
-
-    domain = random.choice(["yandex.ru", "gmail.com"])
-
-    email = f"danil_klimov_55_{random_digits}@{domain}"
-
-    password = "password" + str(random.randint(10, 99))
-
-    return {"email": email, "password": password}
+    return generate_user_data()
